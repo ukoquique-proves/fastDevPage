@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuppyTeach | Desarrollo Senior Ultra-Eficiente</title>
+    <meta name="description" content="Desarrollo de Software en entornos de 310MB de RAM. Automatización e IA sin el overhead de Docker.">
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --text-color: #c9d1d9;
+            --accent-color: #58a6ff;
+            --secondary-color: #30363d;
+            --code-bg: #161b22;
+            --success: #238636;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 2rem 1rem;
+            max-width: 900px;
+            margin: 0 auto;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        h1, h2, h3 {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        .hero {
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #8b949e;
+        }
+
+        .benchmark {
+            background-color: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--secondary-color);
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        }
+
+        .benchmark h3 {
+            margin-top: 0;
+            color: var(--text-color);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .course-card {
+            background-color: var(--code-bg);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--secondary-color);
+            transition: border-color 0.2s;
+        }
+
+        .course-card:hover {
+            border-color: var(--accent-color);
+        }
+
+        .course-card h3 {
+            margin-top: 0;
+        }
+
+        .cta {
+            background-color: var(--secondary-color);
+            padding: 2rem;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--success);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background-color: #2ea043;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #8b949e;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--secondary-color);
+        }
+
+        pre {
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        .metric {
+            color: #79c0ff;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <strong>PuppyTeach</strong> / Engineering
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Desarrollo en entornos de 310MB de RAM.</h1>
+            <p>Automatización e IA sin el overhead de Docker. Rigor técnico para desarrolladores senior que valoran el rendimiento real.</p>
+        </section>
+
+        <section id="benchmark">
+            <h2>Prueba Empírica (Benchmark)</h2>
+            <div class="benchmark">
+                <h3>htop / free -m (Puppy Linux Base)</h3>
+                <pre>
+Mem:   <span class="metric">310MB</span> total, <span class="metric">85MB</span> used, <span class="metric">225MB</span> free
+Swap:  0B total, 0B used, 0B free
+
+[CPU:  2.1% used]
+[Disk I/O: Latency < 1ms]
+                </pre>
+                <p><small>* Comparado con Docker Desktop (~2.5GB base overhead en macOS/Windows).</small></p>
+            </div>
+        </section>
+
+        <section id="cursos">
+            <h2>Catálogo de Cursos (Fase 2)</h2>
+            <div class="courses-grid">
+                <article class="course-card">
+                    <h3>1. Resurrección de Hardware Secundario</h3>
+                    <p>Optimización extrema para Agentes de IA corriendo en hardware legacy. Convierte esa laptop vieja en un nodo de cómputo eficiente.</p>
+                </article>
+                <article class="course-card">
+                    <h3>2. Entornos Inmutables con Save-Files</h3>
+                    <p>El fin de Docker en local. Gestión de dependencias y persistencia nativa con tiempos de arranque sub-segundo.</p>
+                </article>
+                <article class="course-card">
+                    <h3>3. Optimización Pipeline TrixieRetro</h3>
+                    <p>Scripts de producción optimizados para el stack PuppyTeach. Automatización sin dependencias innecesarias.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="lead-magnet" class="cta">
+            <h2>Regalo Técnico: script install_deps.sh</h2>
+            <p>Descarga nuestra guía avanzada de optimización de Save-Files y el script de configuración base para desarrollo en RAM.</p>
+            <!-- Aquí se integraría el formulario de ConvertKit/MailerLite -->
+            <a href="#" class="btn">Obtener Regalo Técnico</a>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
+    </footer>
+
+</body>
+</html>
