@@ -1,5 +1,7 @@
 # PuppyTeach | Desarrollo Senior Ultra-Eficiente
 
+🌐 **Sitio en vivo:** [https://ukoquique-proves.github.io/fastDevPage/](https://ukoquique-proves.github.io/fastDevPage/)
+
 Sitio web minimalista y de alto rendimiento diseñado para la Fase 2 de Teledígitos / PuppyTeach. Este proyecto sirve como la landing page oficial para desarrolladores senior, enfocada en métricas reales y optimización extrema de recursos.
 
 ## 🚀 Filosofía del Proyecto
