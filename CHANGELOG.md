@@ -11,6 +11,8 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Enhanced course micro-copies with senior-friendly, technical tone.
 - Added a Docker vs. Puppy tradeoff section with a comparison table and post-tradeoff CTAs.
 - Improved mobile layout for the comparison table and styled code blocks with terminal-like visuals.
+- Reworked the lead magnet into `Code Compacter CLI & Desktop`, with toolkit UI, technical copy, and email capture flow.
+- Added a developer-focused download section that simulates a productivity toolkit and highlights `.desktop` integration.
 
 ## [0.1.0] - 2026-06-19
 - Initial release of the PuppyTeach landing page.
