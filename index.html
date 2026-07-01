@@ -384,12 +384,23 @@ fn main() {
                 </div>
 
                 <div style="background: #1f2937; padding: 1.5rem; border-radius: 6px; border: 1px solid #374151;">
+                    <div data-fs-success style="display: none; color: #2ea043; font-family: monospace; font-weight: bold; margin-bottom: 1rem; padding: 0.5rem; background: rgba(46, 160, 67, 0.1); border-radius: 4px;">
+                        ✓ ¡Kit preparado! Revisa tu bandeja de entrada para descargar Code Compacter.
+                    </div>
+                    <div data-fs-error style="display: none; color: #ffb347; font-family: monospace; font-weight: bold; margin-bottom: 1rem; padding: 0.5rem; background: rgba(255, 179, 71, 0.1); border-radius: 4px;">
+                        ✕ Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
+                    </div>
+
                     <p style="margin: 0 0 1rem 0; color: #fff; font-weight: bold;">Introduce tu email para recibir el tar.gz con el código fuente completo:</p>
                     
-                    <form action="https://formspree.io/f/TU_ID_AQUI" method="POST" target="_blank" rel="noopener" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
-                        <input type="email" name="email" placeholder="desarrollador@dominio.com" required 
-                               style="flex: 1; min-width: 250px; padding: 0.75rem; border-radius: 4px; border: 1px solid #4b5563; background: #0d1117; color: #fff;">
-                        <button type="submit" class="btn" style="background: #ffaa00; color: #000; font-weight: bold; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; transition: 0.2s;">
+                    <form id="puppyteach-capture-form" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 0.25rem;">
+                            <input type="email" name="email" id="email" placeholder="desarrollador@dominio.com" required data-fs-field
+                                   style="width: 100%; padding: 0.75rem; border-radius: 4px; border: 1px solid #4b5563; background: #0d1117; color: #fff; box-sizing: border-box;">
+                            <span data-fs-error="email" style="color: #ffb347; font-size: 0.8rem; font-family: monospace;"></span>
+                        </div>
+                        
+                        <button type="submit" data-fs-submit-btn class="btn" style="background: #ffaa00; color: #000; font-weight: bold; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; transition: 0.2s; margin-top: 0; height: 46px;">
                             Enviar Code Compacter de Regalo
                         </button>
                     </form>
@@ -464,6 +475,12 @@ fn main() {
     <footer>
         &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
     </footer>
+
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { formElement: '#puppyteach-capture-form', formId: 'mnjyeeod' });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
 </body>
 </html>

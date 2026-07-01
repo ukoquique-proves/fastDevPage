@@ -2,45 +2,55 @@
 
 🌐 **Sitio en vivo:** [https://ukoquique-proves.github.io/fastDevPage/](https://ukoquique-proves.github.io/fastDevPage/)
 
-Sitio web minimalista y de alto rendimiento diseñado para la Fase 2 de Teledígitos / PuppyTeach. Este proyecto sirve como la landing page oficial para desarrolladores senior, enfocada en métricas reales y optimización extrema de recursos.
+Una landing page minimalista y rápida para la Fase 2 de Teledígitos / PuppyTeach. Está pensada para desarrolladores senior que prefieren precisión técnica, claridad y comportamiento real por encima de efectos llamativos.
 
 ## 🚀 Filosofía del Proyecto
 
-Este sitio ha sido construido bajo el concepto **"Antihumo"**:
-- **Minimalismo Técnico**: Sin frameworks pesados, sin rastreadores innecesarios.
-- **Velocidad Extrema**: HTML/CSS estático para carga instantánea.
-- **Autoridad Técnica**: Diseño orientado a datos (benchmarks) y eficiencia (RAM).
+Este sitio se sostiene en la mentalidad **"Antihumo"**:
+- **Minimalismo técnico**: HTML/CSS estático, sin frameworks innecesarios y sin dependencias pesadas.
+- **Carga rápida**: la página debe entrar en pantalla al mismo ritmo que un `cat` desde la terminal.
+- **Transparencia real**: métricas visibles, benchmark honesto y un mensaje directo.
 
-## 🛠️ Estructura del Sitio
+## 🛠️ Qué contiene
 
-El proyecto se basa en un único archivo [index.html](index.html) que incluye:
-- **Hero Section**: Propuesta de valor cruda y técnica.
-- **Benchmark Real**: Comparativa de consumo de RAM (Puppy Linux vs Docker).
-- **Catálogo de Cursos**:
-  1. Resurrección de Hardware Secundario para Agentes de IA.
-  2. Entornos Inmutables con Save-Files (Nativo).
-  3. Optimización Pipeline TrixieRetro.
-- **Lead Magnet**: Sección para descarga de `Code Compacter CLI & Desktop`.
+Todo está en un único archivo: [index.html](index.html).
+
+- **Hero Section**: propuesta de valor dirigida a ingenieros senior.
+- **Benchmark real**: comparación de consumo de RAM entre Puppy Linux y Docker.
+- **Catálogo de cursos**:
+  1. Resurrección de hardware secundario para agentes de IA.
+  2. Entornos inmutables con Save-Files nativos.
+  3. Optimización de pipeline TrixieRetro.
+- **Lead Magnet**: formulario para capturar email y entregar `Code Compacter`.
+
+## 📧 Formulario integrado con Formspree
+
+El formulario ya está configurado para funcionar con Formspree y AJAX, sin recarga de página.
+
+- Endpoint: `https://formspree.io/f/mnjyeeod`
+- Formulario en `index.html` con `id="puppyteach-capture-form"`
+- Manejo de estados con `data-fs-success` y `data-fs-error`
+- Inicialización usando el CDN de `@formspree/ajax`
+
+Esto significa que el usuario sigue en la misma página y el formulario puede mostrar éxito o error de forma inmediata.
 
 ## 📦 Despliegue en GitHub Pages
 
-Para poner este sitio en producción:
+Para publicar:
 
-1. Asegúrate de que el archivo [index.html](index.html) esté en la raíz de tu repositorio.
-2. Ve a **Settings** en tu repositorio de GitHub.
-3. Navega a **Pages** en el menú lateral.
-4. En **Build and deployment**, selecciona la rama `main` (o la que estés usando) y la carpeta `/ (root)`.
-5. Haz clic en **Save**. El sitio estará disponible en `https://<tu-usuario>.github.io/<nombre-repo>/`.
+1. Coloca [index.html](index.html) en la raíz del repositorio.
+2. En GitHub, ve a **Settings > Pages**.
+3. Selecciona la rama `main` (o la que uses) y la carpeta `/ (root)`.
+4. Guarda.
+5. El sitio quedará disponible en `https://<tu-usuario>.github.io/<nombre-repo>/`.
 
-## 🔧 Personalización
+## 🔧 Mantenimiento y ajustes
 
-### Integración de Email Marketing
-Para activar el formulario de captura:
-1. Obtén el código de inserción (embed code) de tu proveedor (ConvertKit, MailerLite, etc.).
-2. Reemplaza el botón en la sección `#lead-magnet` dentro de `index.html` con el código proporcionado por tu plataforma de email.
+### Actualizar datos del benchmark
+Edita la sección `.benchmark` en `index.html` con los nuevos valores obtenidos de `htop` o `free -m`.
 
-### Actualización de Métricas
-Si realizas nuevos benchmarks, puedes actualizar los valores en la clase `.benchmark` dentro de `index.html` para reflejar los datos más recientes de `htop` o `free -m`.
+### Ajustar el lead magnet
+Puedes cambiar el copy y el estilo visual del bloque del formulario sin tocar la lógica, siempre que mantengas el `id` y la inicialización de Formspree.
 
 ---
-**Desarrollado por Teledígitos** | *Sin humo, solo métricas.*
+**Desarrollado por Teledígitos** | *Exactitud técnica con un toque humano.*
