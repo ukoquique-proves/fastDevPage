@@ -5,6 +5,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
 
 ## [Unreleased]
+- Added a lightweight SVG favicon and linked it from `index.html`.
 - Integrated Formspree capture form using `@formspree/ajax` script to handle subscriptions asynchronously without page reload.
 - Added custom inline success (`data-fs-success`) and error (`data-fs-error`) status alerts inside the lead magnet form.
 - Added localized validation feedback using a dedicated error span (`data-fs-error="email"`).
