@@ -6,9 +6,13 @@ Aquí tienes algunas ideas y elementos visuales/narrativos para hacer la landing
 
 En lugar de usar títulos genéricos de marketing como "¡Conviértete en un experto!", usa la narrativa de los dolores reales que resolviste en tus plantillas base:
 
-    El Gancho Principal: Puedes poner un banner superior que diga de forma simpática:
+    El Gancho Principal: Sustituye el enfoque alarmista por uno empático que reconozca la funcionalidad de Docker
+    pero señale la fricción real que PuppyTeach resuelve. Por ejemplo:
 
-        💻 "Dedicado a esa laptop secundaria que tienes juntando polvo en el armario porque Docker la hace agonizar."
+        💡 "Sí, puedes correr `dockerd` nativo en Puppy Linux con solo ~137 MB de RAM. Pero si estás usando una
+        máquina con recursos limitados para experimentar con agentes de IA locales, ¿realmente quieres lidiar con
+        drivers de almacenamiento `vfs`, warnings de cgroups v2 y la falta de `systemd`? PuppyTeach te da el entorno
+        pre-optimizado listo para picar código en RAM sin configurar `daemon.json` ni pelearte con capas."
 
     En la sección del Curso 1 (La Laptop de Viaje Resucitada): Puedes usar un enfoque divertido sobre el hardware: "Dale un propósito a tu vieja máquina de viaje. No necesitas 16 núcleos para correr agentes autónomos de IA de forma fluida si sabes gestionar tus recursos."
 

@@ -11,6 +11,13 @@ Este sitio se sostiene en la mentalidad **"Antihumo"**:
 - **Carga rápida**: la página debe entrar en pantalla al mismo ritmo que un `cat` desde la terminal.
 - **Transparencia real**: métricas visibles, benchmark honesto y un mensaje directo.
 
+### Nuevo gancho (tono empático)
+
+💡 Sí, puedes correr `dockerd` nativo en Puppy Linux con solo ~137 MB de RAM. Pero si estás usando una máquina con recursos limitados
+para experimentar con agentes de IA locales, ¿realmente quieres pelearte con drivers de almacenamiento `vfs`, warnings de cgroups v2 y la
+ausencia de `systemd`? PuppyTeach ofrece un entorno pre-optimizado que elimina esa fricción para que puedas picar código en RAM sin
+configurar `daemon.json` ni pelearte con capas. (Ver sección de métricas y trade-off en `index.html`.)
+
 ## 🛠️ Qué contiene
 
 Todo está en un único archivo: [index.html](index.html).

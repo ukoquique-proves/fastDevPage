@@ -598,10 +598,12 @@
                 <span class="badge">[ Humo: No detectado ]</span>
             </div>
             <h1>Desarrollo en entornos de 310MB de RAM.</h1>
-            <p>Automatización e IA sin el overhead de Docker. Rigor técnico para desarrolladores senior que valoran el
-                rendimiento real.</p>
-            <div class="banner">💻 Dedicado a esa laptop secundaria que tienes juntando polvo en el armario porque
-                Docker la hace agonizar.</div>
+            <p>Automatización e IA sin el overhead de Docker. Rigor técnico con foco en fricción mínima y métricas reales para desarrolladores senior.</p>
+            <div class="banner">💡 <strong>Sí, puedes correr <code>dockerd</code> nativo en Puppy Linux con solo ~137&nbsp;MB de RAM.</strong>
+                Pero si estás usando una máquina con recursos limitados para experimentar con agentes de IA locales,
+                ¿realmente quieres lidiar con drivers de almacenamiento <code>vfs</code>, warnings de cgroups v2 y la
+                falta de <code>systemd</code>? PuppyTeach te da el entorno pre-optimizado listo para picar código en RAM
+                sin configurar <code>daemon.json</code> ni pelearte con capas.</div>
             <div class="hero-cta-group">
                 <a href="#lead-magnet" class="btn">Recibir Code Compacter gratis</a>
                 <a href="#tradeoff" class="expand-link">⚖️ Ver comparación técnica: Docker vs. Puppy →</a>
@@ -609,17 +611,15 @@
         </section>
 
         <section id="benchmark">
-            <h2>Prueba Empírica (Benchmark)</h2>
+            <h2>Prueba Empírica (Métricas Reales)</h2>
             <div class="benchmark">
-                <h3>htop / free -m (Puppy Linux Base)</h3>
+                <h3>Consumo Base en Reposo (Puppy Linux TrixieRetro)</h3>
                 <pre>
-Mem:   <span class="metric">310MB</span> total, <span class="metric">85MB</span> used, <span class="metric">225MB</span> free
-Swap:  0B total, 0B used, 0B free
-
-[CPU:  2.1% used]
-[Disk I/O: Latency < 1ms]
+[Sistema Base]      Mem: ~85MB used (100% en RAM)
+[Con dockerd nativo] Mem: ~137MB adicionales (dockerd + containerd)
+[Docker Desktop]     Mem: ~2.5GB overhead (Si usas Windows/macOS en tu máquina principal)
                 </pre>
-                <p><small>* Comparado con Docker Desktop (~2.5GB base overhead en macOS/Windows).</small></p>
+                <p><small>* Nota de honestidad intelectual: En Linux nativo, dockerd es ligero (~137MB RAM). El verdadero cuello de botella en hardware antiguo no es el daemon, sino el ciclo de vida del almacenamiento y la gestión de capas si no configuras el driver overlay2.</small></p>
             </div>
         </section>
 
@@ -681,11 +681,18 @@ fn main() {
 
                 <div class="lead-form-card">
                     <div data-fs-success class="form-status form-status-success" role="status" aria-live="polite"
-                        aria-atomic="true">
+                        aria-atomic="true" style="display: none;">
                         ✓ ¡Kit preparado! Revisa tu bandeja de entrada para descargar Code Compacter.
+                        <br>
+                        <a href="https://github.com/ukoquique-proves/fastDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz"
+                           class="btn"
+                           style="margin-top: 0.75rem;"
+                           download>
+                            ⬇ Descargar Code_Compacter.tar.gz
+                        </a>
                     </div>
                     <div data-fs-error class="form-status form-status-error" role="alert" aria-live="assertive"
-                        aria-atomic="true">
+                        aria-atomic="true" style="display: none;">
                         ✕ Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
                     </div>
 
@@ -695,6 +702,7 @@ fn main() {
 
                     <form id="puppyteach-capture-form" class="lead-form" action="https://formspree.io/f/mnjyeeod"
                         method="POST" aria-describedby="lead-form-description">
+                        <input type="hidden" name="_next" value="https://ukoquique-proves.github.io/fastDevPage/gracias.html">
                         <div class="lead-form-field">
                             <label for="lead-email" class="sr-only">Correo electrónico</label>
                             <input id="lead-email" type="email" name="email" placeholder="desarrollador@dominio.com"
@@ -717,65 +725,120 @@ fn main() {
         </section>
 
         <section id="tradeoff" class="tradeoff-section">
-            <h2>⚖️ Docker vs. Save-File Nativo</h2>
-            <p class="tradeoff-subtitle">Elige tus problemas (y tu consumo de RAM)</p>
+            <h2>⚖️ Docker en Puppy Linux — Informe Real</h2>
+            <p class="tradeoff-subtitle">Informe de pruebas en TrixiePup64Retro 25.09 · Kernel 6.12.85</p>
 
             <div class="tradeoff-intro">
-                <strong>Cualquier solución de ingeniería es un intercambio de problemas.</strong> Docker te promete
-                aislamiento absoluto a cambio de devorarte los recursos. Puppy Linux y su Save-File/Save-Folder nativo
-                te ofrecen rendimiento puro en RAM a cambio de un flujo de trabajo ligeramente diferente.
+                <strong>Sistema probado:</strong> TrixiePup64Retro 25.09 · Kernel 6.12.85 · Intel i7-4600U · 7.8 GB RAM
+                <br>
+                <strong>Docker:</strong> 26.1.5+dfsg1 (repos de Debian)
+            </div>
+
+            <h3>1. Conclusión directa</h3>
+            <p>Docker <strong>se instala, arranca y ejecuta contenedores correctamente</strong> en esta variante de Puppy
+            Linux. Las afirmaciones de <em>doubted_claim.md</em> están exageradas o incorrectas; a continuación se
+            documenta la refutación y los datos reales.</p>
+
+            <h3>2. Métricas clave</h3>
+            <div class="comparison-table-wrapper">
+                <table class="comparison-table">
+                    <caption>Mediciones reales en reposo</caption>
+                    <thead>
+                        <tr>
+                            <th>Proceso</th>
+                            <th>RAM (RSS)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>dockerd</td><td>~93 MB</td></tr>
+                        <tr><td>containerd</td><td>~44 MB</td></tr>
+                        <tr><td><strong>Total</strong></td><td><strong>~137 MB</strong></td></tr>
+                    </tbody>
+                </table>
             </div>
 
             <div class="comparison-table-wrapper">
                 <table class="comparison-table">
-                    <caption>Comparativa entre Docker tradicional y Puppy Nativo.</caption>
+                    <caption>Comparativa enfocada en limitaciones reales</caption>
                     <thead>
                         <tr>
-                            <th scope="col" class="col-aspect">Aspecto</th>
-                            <th scope="col" class="docker-col col-side">Docker (Tradicional)</th>
-                            <th scope="col" class="puppy-col col-side">Puppy Nativo (TrixieRetro)</th>
+                            <th>Aspecto</th>
+                            <th>Docker en Puppy (Nativo)</th>
+                            <th>Entorno PuppyTeach (Save-File)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Overhead Constante</strong></td>
-                            <td>Demonios y capas de red virtual consumiendo CPU en segundo plano.</td>
-                            <td>Cero overhead base. Save-File congela en RAM cuando no se usa.</td>
+                            <td><strong>Overhead de RAM</strong></td>
+                            <td>~137 MB en reposo (Totalmente viable).</td>
+                            <td>0 MB adicionales. Todo corre directo sobre el rootfs en RAM.</td>
                         </tr>
                         <tr>
-                            <td><strong>Configuración Inicial</strong></td>
-                            <td>Relativamente simple con `docker-compose`.</td>
-                            <td>Requiere escribir tus propios scripts de Bash (`install_deps.sh`).</td>
+                            <td><strong>Almacenamiento</strong></td>
+                            <td>~248 MB en disco básico, pero requiere configurar <code>daemon.json</code> para evitar el lento driver <code>vfs</code>.</td>
+                            <td>Persistencia nativa instantánea mediante bloques SquashFS y Save-Folders.</td>
                         </tr>
                         <tr>
-                            <td><strong>Latencia I/O</strong></td>
-                            <td>Capas intermedias ralentizan pipelines locales de IA.</td>
-                            <td>Latencia <strong>1.1 seg</strong> sin input lag. Directo al hardware.</td>
+                            <td><strong>Gestión de Servicios</strong></td>
+                            <td>Requiere scripts en <code>/etc/rc.d/</code> debido a la ausencia de <code>systemd</code> en BusyBox init.</td>
+                            <td>Integración directa con el ciclo de vida e inicialización del sistema base.</td>
                         </tr>
                         <tr>
-                            <td><strong>Portabilidad</strong></td>
-                            <td>Tu laptop secundaria queda inutilizable. Requiere 2.5GB+ solo en overhead.</td>
-                            <td>Resucita máquinas viejas. Corre en 310MB de RAM base.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Debugging</strong></td>
-                            <td>Logs opacos. A veces falla la API de Docker, no tu código.</td>
-                            <td>Sin abstracciones. Si algo falla, es el kernel o tu script. Transparencia total.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Curva de Aprendizaje</strong></td>
-                            <td>Baja para el caso simple; compleja para orquestación real.</td>
-                            <td>Media. Necesitas entender el ciclo de vida del Save-File y Bash.</td>
+                            <td><strong>Flujo de Trabajo</strong></td>
+                            <td>Excelente para aislar; añade pasos de montaje para exponer herramientas locales e IA.</td>
+                            <td>Diseñado para exprimir el hardware local directo, ideal como sandbox de trinchera.</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div class="tradeoff-close">
-                💡 <strong>En resumen:</strong> Docker soluciona "en mi máquina funciona" a base de fuerza bruta y
-                hardware caro. Puppy Linux TrixieRetro lo soluciona optimizando la arquitectura del entorno para que
-                funcione al límite de la velocidad de la RAM en cualquier máquina, por vieja que sea.
-            </div>
+            <h3>3. Refutación punto por punto</h3>
+            <h4>"Overhead constante"</h4>
+            <p>Falso en la magnitud que implica. El daemon en reposo consume ~137 MB y CPU ~0.1% o menos.</p>
+
+            <h4>"Requiere 2.5 GB+ de overhead"</h4>
+            <p>Falso para Linux nativo — esa cifra corresponde a Docker Desktop en Windows/macOS. En esta instalación
+            los paquetes ocupan ~248 MB en disco y `/var/lib/docker` ocupa ~520 KB tras instalación limpia.</p>
+
+            <h4>"Tu laptop secundaria queda inutilizable"</h4>
+            <p>Falso: la máquina de prueba (i7-4600U) funciona con Docker sin problemas; con 2 GB de RAM es posible usar
+            Docker si el kernel y configuraciones son adecuadas.</p>
+
+            <h4>"Latencia I/O"</h4>
+            <p>Parcialmente cierto: depende del driver de almacenamiento. En esta máquina el driver activo fue
+            <code>vfs</code> (lento). Cambiar a <code>overlay2</code> (si el rootfs y kernel lo permiten) reduce
+            significativamente la penalización.</p>
+
+            <h4>Otras notas</h4>
+            <p>Logs y herramientas de diagnóstico funcionan (`docker logs`, `docker inspect`, `docker stats`).
+            `docker-compose` está disponible en los repos (2.26.1).</p>
+
+            <h3>4. Comandos reproducibles</h3>
+            <pre><code># Instalación completa
+apt-get install -y docker.io docker-cli
+
+# Verificación
+docker run --rm hello-world
+# → "Hello from Docker!" ✓
+
+# Daemon activo
+ps aux | grep dockerd
+</code></pre>
+
+            <h3>5. Limitaciones reales</h3>
+            <ul>
+                <li><strong>Storage driver por defecto: vfs</strong> — en Puppy el rootfs puede estar en squashfs/tmpfs, lo
+                    que impide usar <code>overlay2</code> sin pasos adicionales.</li>
+                <li><strong>Sin systemd real</strong> — Puppy usa BusyBox init; el daemon arranca pero la gestión por
+                    systemd no está disponible por defecto.</li>
+                <li><strong>Warnings en postinstall</strong> por `logger` de BusyBox — no impiden el funcionamiento.</li>
+            </ul>
+
+            <h3>6. Veredicto</h3>
+            <p>El documento crítico no refleja la realidad técnica en Linux nativo. Docker 26.1.5 instala, inicia y
+            ejecuta contenedores en Puppy Linux TrixieRetro 25.09 con aproximadamente <strong>137 MB</strong> RAM en
+            reposo y ~<strong>248 MB</strong> de paquetes en disco. La elección entre Docker y flujos nativos debe
+            basarse en hechos y configuración, no en cifras tomadas de entornos distintos como Docker Desktop.</p>
 
             <div class="tradeoff-cta">
                 <a href="#lead-magnet" class="btn">Ir al formulario de descarga</a>
