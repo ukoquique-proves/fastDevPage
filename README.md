@@ -59,5 +59,8 @@ Edita la sección `.benchmark` en `index.html` con los nuevos valores obtenidos 
 ### Ajustar el lead magnet
 Puedes cambiar el copy y el estilo visual del bloque del formulario sin tocar la lógica, siempre que mantengas el `id` y la inicialización de Formspree.
 
+### Nota técnica sobre la descarga del regalo
+El botón de descarga del lead magnet apunta a una release de GitHub. Aunque el atributo `download` está presente, los navegadores modernos suelen ignorarlo al tratarse de un recurso alojado en un dominio externo (`github.com`) en vez de un recurso same-origin. El archivo sigue descargándose correctamente, pero no se fuerza un nombre personalizado desde el navegador; la release ya llega nombrada como `Code_Compacter.tar.gz`.
+
 ---
 **Desarrollado por Teledígitos** | *Exactitud técnica con un toque humano.*

@@ -634,9 +634,9 @@
                 </article>
                 <article class="course-card">
                     <h3>2. Entornos Inmutables con Save-Files</h3>
-                    <p>Ahorra la CPU que Docker te roba en redes virtuales y demonios redundantes. Aquí aprendes a
-                        congelar tus dependencias corriendo 100% en RAM a costo cero. Tu procesador te lo va a
-                        agradecer.</p>
+                    <p>Aprende a congelar tus dependencias corriendo 100% en RAM mediante bloques SquashFS y Save-Folders.
+                        Evita lidiar con configuraciones complejas de drivers de almacenamiento y aislamientos manuales,
+                        manteniendo persistencia nativa instantánea sin capas adicionales.</p>
                 </article>
                 <article class="course-card">
                     <h3>3. Optimización Pipeline TrixieRetro</h3>
@@ -734,29 +734,18 @@ fn main() {
                 <strong>Docker:</strong> 26.1.5+dfsg1 (repos de Debian)
             </div>
 
-            <h3>1. Conclusión directa</h3>
-            <p>Docker <strong>se instala, arranca y ejecuta contenedores correctamente</strong> en esta variante de Puppy
-            Linux. Las afirmaciones de <em>doubted_claim.md</em> están exageradas o incorrectas; a continuación se
-            documenta la refutación y los datos reales.</p>
-
-            <h3>2. Métricas clave</h3>
-            <div class="comparison-table-wrapper">
-                <table class="comparison-table">
-                    <caption>Mediciones reales en reposo</caption>
-                    <thead>
-                        <tr>
-                            <th>Proceso</th>
-                            <th>RAM (RSS)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>dockerd</td><td>~93 MB</td></tr>
-                        <tr><td>containerd</td><td>~44 MB</td></tr>
-                        <tr><td><strong>Total</strong></td><td><strong>~137 MB</strong></td></tr>
-                    </tbody>
-                </table>
+            <div class="banner">💡 <strong>Sí, puedes correr <code>dockerd</code> nativo en Puppy Linux con solo ~137&nbsp;MB de RAM.</strong>
+                Pero si estás usando una máquina con recursos limitados para experimentar con agentes de IA locales,
+                ¿realmente quieres lidiar con drivers de almacenamiento <code>vfs</code>, warnings de cgroups v2 y la
+                falta de <code>systemd</code>? PuppyTeach te da el entorno pre-optimizado listo para picar código en RAM
+                sin configurar <code>daemon.json</code> ni pelearte con capas. [cite: 4]
             </div>
 
+            <h3>1. Conclusión directa</h3>
+            <p>Docker <strong>se instala, arranca y ejecuta contenedores correctamente</strong> en esta variante de Puppy
+            Linux. A continuación se documentan los datos reales.</p>
+
+            <h3>2. Métricas clave</h3>
             <div class="comparison-table-wrapper">
                 <table class="comparison-table">
                     <caption>Comparativa enfocada en limitaciones reales</caption>
@@ -792,56 +781,8 @@ fn main() {
                 </table>
             </div>
 
-            <h3>3. Refutación punto por punto</h3>
-            <h4>"Overhead constante"</h4>
-            <p>Falso en la magnitud que implica. El daemon en reposo consume ~137 MB y CPU ~0.1% o menos.</p>
-
-            <h4>"Requiere 2.5 GB+ de overhead"</h4>
-            <p>Falso para Linux nativo — esa cifra corresponde a Docker Desktop en Windows/macOS. En esta instalación
-            los paquetes ocupan ~248 MB en disco y `/var/lib/docker` ocupa ~520 KB tras instalación limpia.</p>
-
-            <h4>"Tu laptop secundaria queda inutilizable"</h4>
-            <p>Falso: la máquina de prueba (i7-4600U) funciona con Docker sin problemas; con 2 GB de RAM es posible usar
-            Docker si el kernel y configuraciones son adecuadas.</p>
-
-            <h4>"Latencia I/O"</h4>
-            <p>Parcialmente cierto: depende del driver de almacenamiento. En esta máquina el driver activo fue
-            <code>vfs</code> (lento). Cambiar a <code>overlay2</code> (si el rootfs y kernel lo permiten) reduce
-            significativamente la penalización.</p>
-
-            <h4>Otras notas</h4>
-            <p>Logs y herramientas de diagnóstico funcionan (`docker logs`, `docker inspect`, `docker stats`).
-            `docker-compose` está disponible en los repos (2.26.1).</p>
-
-            <h3>4. Comandos reproducibles</h3>
-            <pre><code># Instalación completa
-apt-get install -y docker.io docker-cli
-
-# Verificación
-docker run --rm hello-world
-# → "Hello from Docker!" ✓
-
-# Daemon activo
-ps aux | grep dockerd
-</code></pre>
-
-            <h3>5. Limitaciones reales</h3>
-            <ul>
-                <li><strong>Storage driver por defecto: vfs</strong> — en Puppy el rootfs puede estar en squashfs/tmpfs, lo
-                    que impide usar <code>overlay2</code> sin pasos adicionales.</li>
-                <li><strong>Sin systemd real</strong> — Puppy usa BusyBox init; el daemon arranca pero la gestión por
-                    systemd no está disponible por defecto.</li>
-                <li><strong>Warnings en postinstall</strong> por `logger` de BusyBox — no impiden el funcionamiento.</li>
-            </ul>
-
-            <h3>6. Veredicto</h3>
-            <p>El documento crítico no refleja la realidad técnica en Linux nativo. Docker 26.1.5 instala, inicia y
-            ejecuta contenedores en Puppy Linux TrixieRetro 25.09 con aproximadamente <strong>137 MB</strong> RAM en
-            reposo y ~<strong>248 MB</strong> de paquetes en disco. La elección entre Docker y flujos nativos debe
-            basarse en hechos y configuración, no en cifras tomadas de entornos distintos como Docker Desktop.</p>
-
             <div class="tradeoff-cta">
-                <a href="#lead-magnet" class="btn">Ir al formulario de descarga</a>
+                <a href="#lead-magnet" class="btn">Descargar el kit gratuito</a>
                 <a href="#cursos" class="btn btn-secondary">Ver catálogo de cursos</a>
             </div>
         </section>
