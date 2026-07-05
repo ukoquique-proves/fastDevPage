@@ -656,6 +656,14 @@
             <div class="lead-form-card" style="background: #161b22; max-width: 600px;">
                 <p class="lead-form-intro">Lista de Espera Prioritaria:</p>
                 
+                <div data-fs-success="waitlist" class="form-status form-status-success" role="status"
+                    aria-live="polite" aria-atomic="true" style="display: none;">
+                    ✓ ¡Anotado! Te avisaremos en cuanto se abran los cupos de Octubre 2026.
+                </div>
+                <div data-fs-error="waitlist" class="form-status form-status-error" role="alert"
+                    aria-live="assertive" aria-atomic="true" style="display: none;">
+                    ✕ Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
+                </div>
                 <!-- Reutiliza Formspree o un formulario directo -->
                 <form id="puppyteach-waitlist-form" class="lead-form" action="https://formspree.io/f/mnjyeeod" method="POST">
                     <input type="hidden" name="_subject" value="Nueva inscripción - Cohorte Octubre 2026">
@@ -821,6 +829,7 @@ fn main() {
     <script>
         window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
         formspree('initForm', { formElement: '#puppyteach-capture-form', formId: 'mnjyeeod' });
+        formspree('initForm', { formElement: '#puppyteach-waitlist-form', formId: 'mnjyeeod' });
     </script>
     <script src="https://unpkg.com/@formspree/ajax@1.1.5/dist/index.umd.js"
         integrity="sha512-7vwR5P/c03o+a2B4TtQ92Q8OV5UfJuGcOgYnxcEWNc2fP//QznIXdd2crC5wt+HWfv39qYHjD7NeDSnDqfSs8w=="
