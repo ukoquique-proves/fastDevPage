@@ -41,6 +41,8 @@ El formulario ya está configurado para funcionar con Formspree y AJAX, sin reca
 
 Esto significa que el usuario sigue en la misma página y el formulario puede mostrar éxito o error de forma inmediata.
 
+> Nota: Formspree aún no está completamente configurado desde el panel. Debes completar la configuración de la cuenta/formulario en Formspree para que los emails lleguen correctamente y el autorrespondedor funcione si lo necesitas.
+
 ## 📦 Despliegue en GitHub Pages
 
 Para publicar:

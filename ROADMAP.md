@@ -13,6 +13,7 @@
 
 ## Flujo del formulario
 
+- [ ] Completar la configuración del formulario en el panel de Formspree para que los envíos lleguen correctamente.
 - [ ] Configurar el autoresponder de Formspree con el enlace de descarga.
 - [ ] Probar el formulario publicado de extremo a extremo y confirmar que llegan los correos.
 - [ ] Revisar los CTA para que cada botón y enlace describa con precisión su destino.
