@@ -13,7 +13,7 @@ Al enviar con éxito, el bloque `data-fs-success` se hace visible mostrando un b
 https://github.com/ukoquique-proves/fastDevPage/releases/download/v0.1.0/Code_Compacter.tar.gz
 ```
 
-El visitante descarga el archivo sin salir de la página.
+El visitante descarga el archivo sin salir de la página. Importante: el sitio no envía automáticamente el `.tar.gz` como adjunto de email; el flujo actual ofrece un enlace de descarga directa tras el envío.
 
 ### Caso 2 — JS bloqueado o falla (fallback nativo)
 
@@ -38,6 +38,13 @@ La URL sigue el patrón:
 https://github.com/ukoquique-proves/fastDevPage/releases/download/<tag>/Code_Compacter.tar.gz
 ```
 
-## Configuración de Formspree
+## Nota de arquitectura
 
-En el panel de Formspree para el form `mnjyeeod`, habilita el autorrespondedor con la misma URL de descarga en el cuerpo del email. Esto le da al visitante un enlace durable aunque cierre el tab antes de descargar.
+El formulario actual usa Formspree únicamente para capturar el lead y registrar el envío. No se usa Formspree para entregar el archivo como adjunto ni para enviar un autorrespondedor con el paquete.
+
+La experiencia actual ya resuelve la entrega en la misma página:
+
+- vía JS: el bloque de éxito muestra el botón de descarga inmediatamente;
+- vía fallback: `gracias.html` ofrece el mismo botón si el navegador no ejecuta JS.
+
+Si en el futuro se quiere un respaldo por email sin depender de Formspree, la opción más simple sería usar Zapier o Make con un webhook o notificación del envío y enviar un mensaje de seguimiento con el enlace. Hoy no es necesario para el flujo principal.

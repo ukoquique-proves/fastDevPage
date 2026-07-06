@@ -13,9 +13,9 @@
 
 ## Flujo del formulario
 
-- [ ] Completar la configuración del formulario en el panel de Formspree para que los envíos lleguen correctamente.
-- [ ] Configurar el autoresponder de Formspree con el enlace de descarga.
-- [ ] Probar el formulario publicado de extremo a extremo y confirmar que llegan los correos.
+- [x] Mantener el formulario conectado a Formspree para captura básica de leads; la entrega del toolkit ya ocurre inline en la página.
+- [x] No necesario: la descarga ya ocurre inline (JS) y vía gracias.html (fallback), así que no se requiere autoresponder de Formspree.
+- [ ] Probar el formulario publicado de extremo a extremo y confirmar que llegan los correos de lead.
 - [ ] Revisar los CTA para que cada botón y enlace describa con precisión su destino.
 
 ## Accesibilidad y SEO

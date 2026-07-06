@@ -34,6 +34,8 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Added footer to all three course detail pages for consistency.
 - `check.sh` now includes footer presence check across all HTML pages.
 - README rewritten to reflect current multi-file architecture and document all three scripts.
+- Clarified in `ROADMAP.md` and `VISITORS_GIFT.md` that Formspree is used for lead capture only, while toolkit delivery already happens inline on the page and via `gracias.html`.
+- Synced `.env.example` with the current environment variable names used by the project.
 
 ### Fixed
 - Removed dead CSS classes (`.col-side`, `.docker-col`, `.puppy-col`) with no corresponding HTML usage.

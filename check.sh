@@ -84,15 +84,30 @@ for f in "${HTML_FILES[@]}"; do
     grep -q '<footer>' "$f" && pass "$f has footer" || fail "$f is missing footer"
 done
 
-# 9. Internal href links point to existing files
+# 9. Internal href links — verify file exists AND anchor fragment exists on target page
 echo ""
 echo "[ Internal link integrity ]"
 for f in "${HTML_FILES[@]}"; do
     while IFS= read -r href; do
-        # strip anchors
         target="${href%%#*}"
+        anchor="${href##*#}"
+        # if no fragment, anchor == href (no # present); normalize
+        [ "$anchor" = "$href" ] && anchor=""
+
         [ -z "$target" ] && continue
-        [ -f "$target" ] && pass "$f → $target" || fail "$f links to missing file: $target"
+        if [ ! -f "$target" ]; then
+            fail "$f links to missing file: $target"
+            continue
+        fi
+        pass "$f → $target"
+
+        if [ -n "$anchor" ]; then
+            if grep -qP "id=\"${anchor}\"" "$target"; then
+                pass "$f → $target#$anchor (anchor exists)"
+            else
+                fail "$f → $target#$anchor (anchor '#$anchor' not found in $target)"
+            fi
+        fi
     done < <(grep -oP 'href="\K[^"]+' "$f" | grep '\.html')
 done
 
