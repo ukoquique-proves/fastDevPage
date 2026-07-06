@@ -77,7 +77,14 @@ for doc in README.md CHANGELOG.md VISITORS_GIFT.md; do
     fi
 done
 
-# 8. Internal href links point to existing files
+# 8. Every HTML file has a footer
+echo ""
+echo "[ Footer presence ]"
+for f in "${HTML_FILES[@]}"; do
+    grep -q '<footer>' "$f" && pass "$f has footer" || fail "$f is missing footer"
+done
+
+# 9. Internal href links point to existing files
 echo ""
 echo "[ Internal link integrity ]"
 for f in "${HTML_FILES[@]}"; do
