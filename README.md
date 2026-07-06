@@ -64,5 +64,15 @@ Puedes cambiar el copy y el estilo visual del bloque del formulario sin tocar la
 ### Nota técnica sobre la descarga del regalo
 El botón de descarga del lead magnet apunta a una release de GitHub. Aunque el atributo `download` está presente, los navegadores modernos suelen ignorarlo al tratarse de un recurso alojado en un dominio externo (`github.com`) en vez de un recurso same-origin. El archivo sigue descargándose correctamente, pero no se fuerza un nombre personalizado desde el navegador; la release ya llega nombrada como `Code_Compacter.tar.gz`.
 
+## ▶️ Desarrollo local
+
+Corre `serve.sh` desde cualquier carpeta para levantar el servidor y abrir el browser automáticamente:
+
+```bash
+/root/aPROYECTOS/LANDING_PAGE/uko_WebSite/serve.sh
+```
+
+El script espera a que el servidor esté listo antes de abrir `http://localhost:8080`, por lo que no necesitas correr nada más ni abrir el browser manualmente.
+
 ---
 **Desarrollado por Teledígitos** | *Exactitud técnica con un toque humano.*

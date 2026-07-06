@@ -140,6 +140,11 @@ section {
 
 .course-card h3 {
     margin-top: 0;
+    color: #39ff14;
+}
+
+#cursos > h2 {
+    color: #39ff14;
 }
 
 .cta {
