@@ -42,9 +42,6 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - `gracias.html` updated to use shared `styles.css` and `favicon.svg` instead of inline styles.
 - Enhanced course micro-copy for a more senior technical audience.
 - Improved mobile layout for the comparison table and refined code block presentation.
-- README rewritten to reflect current multi-file architecture.
-
-### Fixed
 - Corrected the courses section title from `Catálogo de Cursos (Fase 2)` to `Catálogo de Cursos`.
 - Fixed the secondary CTA hover state so it no longer inherited primary button styling.
 - Improved keyboard accessibility with visible `:focus-visible` states across all interactive elements.
