@@ -21,6 +21,9 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Style guide document `consejos_formato.md`.
 
 ### Changed
+- Course cards are now fully clickable to navigate directly to their respective detailed course pages.
+- Updated course card button click handlers to use `event.stopPropagation()` to preserve modal functionality without conflicting with card navigation.
+- Added `.vscode/` to `.gitignore` to exclude IDE-specific settings from version control.
 - Course card CTAs now open modal dialogs with course previews instead of direct external links, improving engagement on landing page.
 - Extracted reusable stylesheet (`styles.css`) shared across landing page and all course detail pages, eliminating CSS duplication.
 - Replaced remaining lead form inline styles with reusable CSS classes.
