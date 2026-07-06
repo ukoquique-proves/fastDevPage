@@ -2,69 +2,43 @@
 
 🌐 **Sitio en vivo:** [https://ukoquique-proves.github.io/fastDevPage/](https://ukoquique-proves.github.io/fastDevPage/)
 
-Una landing page minimalista y rápida para la Fase 2 de Teledígitos / PuppyTeach. Está pensada para desarrolladores senior que prefieren precisión técnica, claridad y comportamiento real por encima de efectos llamativos.
+Sitio web estático para la Fase 2 de Teledígitos / PuppyTeach. Dirigido a desarrolladores senior que valoran precisión técnica, métricas reales y cero overhead innecesario.
 
-## 🚀 Filosofía del Proyecto
+## Filosofía del Proyecto
 
-Este sitio se sostiene en la mentalidad **"Antihumo"**:
-- **Minimalismo técnico**: HTML/CSS estático, sin frameworks innecesarios y sin dependencias pesadas.
-- **Carga rápida**: la página debe entrar en pantalla al mismo ritmo que un `cat` desde la terminal.
-- **Transparencia real**: métricas visibles, benchmark honesto y un mensaje directo.
+Construido bajo la mentalidad **"Antihumo"**: HTML/CSS estático, sin frameworks pesados, sin rastreadores, carga instantánea.
 
-### Nuevo gancho (tono empático)
+## Estructura del proyecto
 
-💡 Sí, puedes correr `dockerd` nativo en Puppy Linux con solo ~137 MB de RAM. Pero si estás usando una máquina con recursos limitados
-para experimentar con agentes de IA locales, ¿realmente quieres pelearte con drivers de almacenamiento `vfs`, warnings de cgroups v2 y la
-ausencia de `systemd`? PuppyTeach ofrece un entorno pre-optimizado que elimina esa fricción para que puedas picar código en RAM sin
-configurar `daemon.json` ni pelearte con capas. (Ver sección de métricas y trade-off en `index.html`.)
+```
+index.html                        # Landing page principal
+toolkit.html                      # Página del toolkit Code Compacter (detalle + formulario)
+gracias.html                      # Página de confirmación post-formulario (fallback no-JS)
+curso-1-hardware-secundario.html  # Detalle del Curso 1
+curso-2-savefiles.html            # Detalle del Curso 2
+curso-3-pipeline-trixieretro.html # Detalle del Curso 3
+styles.css                        # Hoja de estilos compartida por todas las páginas
+serve.sh                          # Script de desarrollo local
+```
 
-## 🛠️ Qué contiene
+## Formulario integrado con Formspree
 
-Todo está en un único archivo: [index.html](index.html).
-
-- **Hero Section**: propuesta de valor dirigida a ingenieros senior.
-- **Benchmark real**: comparación de consumo de RAM entre Puppy Linux y Docker.
-- **Catálogo de cursos**:
-  1. Resurrección de hardware secundario para agentes de IA.
-  2. Entornos inmutables con Save-Files nativos.
-  3. Optimización de pipeline TrixieRetro.
-- **Lead Magnet**: formulario para capturar email y entregar `Code Compacter`.
-
-## 📧 Formulario integrado con Formspree
-
-El formulario ya está configurado para funcionar con Formspree y AJAX, sin recarga de página.
+Ambos formularios usan Formspree AJAX (`@formspree/ajax@1.1.5`) sin recarga de página.
 
 - Endpoint: `https://formspree.io/f/mnjyeeod`
-- Formulario en `index.html` con `id="puppyteach-capture-form"`
-- Manejo de estados con `data-fs-success` y `data-fs-error`
-- Inicialización usando una versión fija del CDN de `@formspree/ajax` con SRI y `crossorigin`
+- Formulario de descarga toolkit: `id="puppyteach-capture-form"` en `toolkit.html`
+- Formulario de lista de espera: `id="puppyteach-waitlist-form"` en `index.html`
+- Feedback inline con `data-fs-success` / `data-fs-error`
 
-Esto significa que el usuario sigue en la misma página y el formulario puede mostrar éxito o error de forma inmediata.
+> Formspree debe estar configurado desde el panel para que los emails lleguen correctamente.
 
-> Nota: Formspree aún no está completamente configurado desde el panel. Debes completar la configuración de la cuenta/formulario en Formspree para que los emails lleguen correctamente y el autorrespondedor funcione si lo necesitas.
+## Despliegue en GitHub Pages
 
-## 📦 Despliegue en GitHub Pages
+1. En GitHub, ve a **Settings > Pages**.
+2. Selecciona la rama `main` y la carpeta `/ (root)`.
+3. Guarda. El sitio estará en `https://ukoquique-proves.github.io/fastDevPage/`.
 
-Para publicar:
-
-1. Coloca [index.html](index.html) en la raíz del repositorio.
-2. En GitHub, ve a **Settings > Pages**.
-3. Selecciona la rama `main` (o la que uses) y la carpeta `/ (root)`.
-4. Guarda.
-5. El sitio quedará disponible en `https://<tu-usuario>.github.io/<nombre-repo>/`.
-
-## 🔧 Mantenimiento y ajustes
-
-### Actualizar datos del benchmark
-Edita la sección `.benchmark` en `index.html` con los nuevos valores obtenidos de `htop` o `free -m`.
-
-### Ajustar el lead magnet
-Puedes cambiar el copy y el estilo visual del bloque del formulario sin tocar la lógica, siempre que mantengas el `id` y la inicialización de Formspree.
-
-### Nota técnica sobre la descarga del regalo
-El botón de descarga del lead magnet apunta a una release de GitHub. Aunque el atributo `download` está presente, los navegadores modernos suelen ignorarlo al tratarse de un recurso alojado en un dominio externo (`github.com`) en vez de un recurso same-origin. El archivo sigue descargándose correctamente, pero no se fuerza un nombre personalizado desde el navegador; la release ya llega nombrada como `Code_Compacter.tar.gz`.
-
-## ▶️ Desarrollo local
+## Desarrollo local
 
 Corre `serve.sh` desde cualquier carpeta para levantar el servidor y abrir el browser automáticamente:
 
@@ -72,7 +46,13 @@ Corre `serve.sh` desde cualquier carpeta para levantar el servidor y abrir el br
 /root/aPROYECTOS/LANDING_PAGE/uko_WebSite/serve.sh
 ```
 
-El script espera a que el servidor esté listo antes de abrir `http://localhost:8080`, por lo que no necesitas correr nada más ni abrir el browser manualmente.
+El script espera a que el servidor responda antes de abrir `http://localhost:8080`.
+
+## Mantenimiento
+
+- **Benchmark**: edita la sección `.benchmark` en `index.html` con nuevos valores de `htop` o `free -m`.
+- **Toolkit copy**: edita `toolkit.html`. El formulario de captura vive ahí, no en `index.html`.
+- **Cursos**: cada curso tiene su propio archivo HTML independiente.
 
 ---
-**Desarrollado por Teledígitos** | *Exactitud técnica con un toque humano.*
+**Desarrollado por Teledígitos** | *Sin humo, solo métricas.*

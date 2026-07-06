@@ -7,40 +7,34 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 ## [Unreleased]
 
 ### Added
+- `toolkit.html`: dedicated page for Code Compacter with full detail copy, feature list, code sample output, and the email capture form (`id="puppyteach-capture-form"`).
+- `serve.sh`: launches a local HTTP server and opens the browser automatically from any directory, polling until the server is ready before opening.
+- Waitlist form (`id="puppyteach-waitlist-form"`) in `index.html` wired to Formspree SDK with inline success/error feedback (`data-fs-success="waitlist"`, `data-fs-error="waitlist"`).
 - Three standalone course detail pages (`curso-1-hardware-secundario.html`, `curso-2-savefiles.html`, `curso-3-pipeline-trixieretro.html`) with full program information, learning objectives, and target audience.
-- Course detail modals on landing page using native HTML5 `<dialog>` elements—no framework, no external dependencies.
-- JavaScript modal management functions (`openCourseModal()`, `closeCourseModal()`) with backdrop and close-on-click behavior.
-- Lightweight SVG favicon linked from `index.html`.
-- Formspree AJAX integration using `@formspree/ajax` for asynchronous lead capture without page reload.
-- Custom success (`data-fs-success`) and error (`data-fs-error`) status alerts inside the lead magnet form.
-- Localized validation feedback with a dedicated error span (`data-fs-error="email"`).
-- Empathetic status badges and a clearer hero CTA.
+- Lightweight SVG favicon linked from all pages.
+- Formspree AJAX integration using a pinned version of `@formspree/ajax` with SRI and `crossorigin`.
 - Docker vs. Puppy tradeoff section with comparison table and follow-up CTAs.
-- Developer-focused `Code Compacter CLI & Desktop` lead magnet section with toolkit-style presentation.
-- Download-oriented content highlighting `.desktop` integration.
+- `gracias.html`: no-JS fallback confirmation page with direct download link.
 - Style guide document `consejos_formato.md`.
 
 ### Changed
-- Course cards are now fully clickable to navigate directly to their respective detailed course pages.
-- Updated course card button click handlers to use `event.stopPropagation()` to preserve modal functionality without conflicting with card navigation.
-- Added `.vscode/` to `.gitignore` to exclude IDE-specific settings from version control.
-- Course card CTAs now open modal dialogs with course previews instead of direct external links, improving engagement on landing page.
-- Extracted reusable stylesheet (`styles.css`) shared across landing page and all course detail pages, eliminating CSS duplication.
-- Replaced remaining lead form inline styles with reusable CSS classes.
+- `index.html` `#lead-magnet` section stripped to title + CTA only; all detail content and the capture form moved to `toolkit.html`.
+- All internal links previously pointing to `#lead-magnet` now point to `toolkit.html`.
+- Course cards are now fully clickable links navigating directly to their respective detail pages.
+- Extracted reusable stylesheet (`styles.css`) shared across all pages.
+- Course card titles and "Catálogo de Cursos" heading now use neon green (`#39ff14`).
+- Lead magnet title updated from "agentes de IA" to "agentes de inteligencia artificial".
+- Toolkit copy updated from "minimalismo de Puppy Linux" to "minimalismo en Linux".
 - Improved dynamic form feedback accessibility with `aria-live`, `role`, and clearer field descriptions.
-- Clarified CTA copy so hero and section links match their real destinations and primary conversion path.
-- Restructured `ROADMAP.md` into grouped sections covering form flow, CTA consistency, accessibility, SEO, cleanup, and launch tasks.
 - Enhanced course micro-copy for a more senior technical audience.
 - Improved mobile layout for the comparison table and refined code block presentation.
-- Consolidated repeated header, navigation, lead magnet, form, and table styles into reusable stylesheet classes.
+- README rewritten to reflect current multi-file architecture.
 
 ### Fixed
 - Corrected the courses section title from `Catálogo de Cursos (Fase 2)` to `Catálogo de Cursos`.
-- Removed redundant CSS declarations, including duplicate `pre` styling, to keep `index.html` cleaner.
-- Fixed the secondary CTA hover state so `Ver programa del Curso 2` no longer inherited the primary button hover styling.
-- Improved keyboard accessibility with visible `:focus-visible` states for navigation links, CTA links, buttons, and the email input.
-- Improved form accessibility by adding a proper label association for the email field instead of relying only on the placeholder.
-- Improved table accessibility by adding `scope="col"` to header cells and a descriptive comparison table caption.
+- Fixed the secondary CTA hover state so it no longer inherited primary button styling.
+- Improved keyboard accessibility with visible `:focus-visible` states across all interactive elements.
+- Improved form accessibility with proper label association for email fields.
 
 ### Published
 - Published the project to GitHub Pages at `https://ukoquique-proves.github.io/fastDevPage/`.
