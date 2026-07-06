@@ -61,23 +61,23 @@
         <section id="cursos">
             <h2>Catálogo de Cursos</h2>
             <div class="courses-grid">
-                <article class="course-card">
+                <article class="course-card" style="cursor: pointer;" onclick="window.location.href='curso-1-hardware-secundario.html'">
                     <h3>1. Resurrección de Hardware Secundario</h3>
                     <p>Dale un propósito a tu vieja máquina de viaje. No necesitas 16 núcleos para correr agentes
                         autónomos de IA de forma fluida si sabes gestionar tus recursos. Aprende a exprimir cada MB de
                         RAM.</p>
-                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="openCourseModal(1)">Ver programa del curso →</button>
+                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="event.stopPropagation(); openCourseModal(1)">Ver programa del curso →</button>
                 </article>
-                <article class="course-card">
+                <article class="course-card" style="cursor: pointer;" onclick="window.location.href='curso-2-savefiles.html'">
                     <h3>2. Entornos Inmutables con Save-Files</h3>
                     <p>Aprende a congelar tus dependencias corriendo 100% en RAM a costo cero mediante bloques SquashFS y Save-Folders. Evita lidiar con configuraciones complejas de drivers de almacenamiento, manteniendo persistencia nativa sin capas redundantes.</p>
-                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="openCourseModal(2)">Ver programa del curso →</button>
+                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="event.stopPropagation(); openCourseModal(2)">Ver programa del curso →</button>
                 </article>
-                <article class="course-card">
+                <article class="course-card" style="cursor: pointer;" onclick="window.location.href='curso-3-pipeline-trixieretro.html'">
                     <h3>3. Optimización Pipeline TrixieRetro</h3>
                     <p>Scripts de producción optimizados para el stack PuppyTeach. Automatización sin dependencias
                         innecesarias. Código limpio, métricas reales, cero humo.</p>
-                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="openCourseModal(3)">Ver programa del curso →</button>
+                    <button class="expand-link" style="margin-top: 1rem; border: none; background: none; color: #58a6ff; cursor: pointer; text-decoration: underline; font: inherit;" onclick="event.stopPropagation(); openCourseModal(3)">Ver programa del curso →</button>
                 </article>
             </div>
         </section>
