@@ -2,23 +2,22 @@
 DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$DIR"
 
-# Load credentials from .env
-if [ ! -f ".env" ]; then
-    echo "Error: .env file not found. Copy .env.example to .env and fill in your values."
-    exit 1
-fi
-set -a
-source .env
-set +a
-
-if [ -z "$GITHUB_REPO" ] || [ -z "$GITHUB_TOKEN" ]; then
-    echo "Error: GITHUB_REPO and GITHUB_TOKEN must be set in .env"
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    echo "Error: this directory is not a git repository."
     exit 1
 fi
 
-# Build authenticated remote URL
-REPO_PATH="${GITHUB_REPO#https://github.com/}"
-REMOTE_URL="https://${GITHUB_TOKEN}@github.com/${REPO_PATH}.git"
+if ! git remote get-url origin > /dev/null 2>&1; then
+    echo "Error: git remote 'origin' is not configured."
+    echo "Configure your credentials with SSH, GitHub CLI or a git credential helper, then try again."
+    exit 1
+fi
+
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+if [ -z "$BRANCH" ] || [ "$BRANCH" = "HEAD" ]; then
+    echo "Error: could not determine the current branch."
+    exit 1
+fi
 
 echo "Running consistency checks before push..."
 bash check.sh
@@ -27,9 +26,8 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Stage all tracked changes
-git add -u
-git add *.html *.css *.sh *.md favicon.svg 2>/dev/null
+# Stage all changes in the repository
+git add -A
 
 # Require a commit message
 if [ -z "$1" ]; then
@@ -44,5 +42,10 @@ if [ -z "$MSG" ]; then
     exit 1
 fi
 
+if git diff --cached --quiet; then
+    echo "Push aborted. There are no staged changes to commit."
+    exit 1
+fi
+
 git commit -m "$MSG"
-git push "$REMOTE_URL" main
+git push origin "$BRANCH"

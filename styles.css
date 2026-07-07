@@ -51,6 +51,11 @@ header {
     color: var(--accent-color);
 }
 
+.brand-link {
+    color: inherit;
+    text-decoration: none;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -61,6 +66,26 @@ header {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(-120%);
+    background: var(--accent-color);
+    color: black;
+    padding: 0.75rem 1rem;
+    z-index: 1000;
+    border-bottom-right-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--text-color);
+    outline-offset: 2px;
 }
 
 h1,
@@ -162,7 +187,7 @@ section {
     margin-top: 3rem;
 }
 
-.lead-magnet-inner {
+.lead-magnet__inner {
     max-width: 800px;
     margin: 0 auto;
     text-align: left;
@@ -179,7 +204,7 @@ section {
     font-size: 0.85rem;
 }
 
-.lead-magnet-title {
+.lead-magnet__title {
     color: #fff;
     margin-top: 1rem;
 }
@@ -222,14 +247,14 @@ section {
     font-size: 0.85rem;
 }
 
-.lead-form-card {
+.lead-form__card {
     background: #1f2937;
     padding: 1.5rem;
     border-radius: 6px;
     border: 1px solid #374151;
 }
 
-.lead-form-intro {
+.lead-form__intro {
     margin: 0 0 1rem 0;
     color: #fff;
     font-weight: bold;
@@ -241,7 +266,7 @@ section {
     gap: 0.5rem;
 }
 
-.lead-input {
+.lead-form__input {
     flex: 1;
     min-width: 250px;
     padding: 0.75rem;
@@ -251,12 +276,13 @@ section {
     color: #fff;
 }
 
-.lead-input:focus-visible {
+.lead-form__input:focus-visible {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
     border-color: var(--accent-color);
 }
 
+.btn--highlight,
 .btn-highlight {
     background: #ffaa00;
     color: #000;
@@ -267,18 +293,19 @@ section {
     transition: 0.2s;
 }
 
+.btn--highlight:hover,
 .btn-highlight:hover {
     background: #e69f00;
 }
 
-.lead-form-note {
+.lead-form__note {
     margin: 0.5rem 0 0 0;
     font-size: 0.75rem;
     color: #9ca3af;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-.lead-form-field {
+.lead-form__field {
     flex: 1;
     min-width: 250px;
     display: flex;
@@ -286,25 +313,57 @@ section {
     gap: 0.25rem;
 }
 
-.lead-input-full {
+.lead-form__field--inline {
+    display: flex;
+    flex: 1;
+    min-width: 250px;
+}
+
+.lead-form__input--full {
     width: 100%;
     box-sizing: border-box;
 }
 
-.lead-form-help {
+.lead-form__input--fixed-height {
+    width: 100%;
+    box-sizing: border-box;
+    height: 46px;
+}
+
+.btn--fixed-height,
+.btn-fixed-height {
+    margin-top: 0;
+    height: 46px;
+    padding: 0 1.5rem;
+}
+
+.btn--tight-top,
+.btn-tight-top {
+    margin-top: 0.75rem;
+}
+
+.page-centered main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    text-align: center;
+}
+
+.lead-form__help {
     color: #9ca3af;
     font-size: 0.8rem;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
-.lead-form-error-text {
+.lead-form__error {
     color: #ffb347;
     font-size: 0.8rem;
     font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     min-height: 1.2rem;
 }
 
-.lead-submit-btn {
+.lead-form__submit {
     margin-top: 0;
     height: 46px;
 }
@@ -348,12 +407,14 @@ section {
     outline-offset: 3px;
 }
 
+.btn--secondary,
 .btn-secondary {
     background-color: transparent;
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
 }
 
+.btn--secondary:hover,
 .btn-secondary:hover {
     background-color: rgba(88, 166, 255, 0.1);
 }
@@ -400,7 +461,7 @@ section {
     border-radius: 4px;
 }
 
-.hero-cta-group {
+.hero__cta-group {
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
@@ -426,7 +487,7 @@ section {
     margin-bottom: 2rem;
 }
 
-.lead-form-card--compact {
+.lead-form__card--compact {
     background: var(--code-bg);
     max-width: 600px;
 }

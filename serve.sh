@@ -1,6 +1,15 @@
 #!/bin/bash
 DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$DIR"
+
+cleanup() {
+    if [ -n "$SERVER_PID" ] && kill -0 "$SERVER_PID" > /dev/null 2>&1; then
+        kill "$SERVER_PID" > /dev/null 2>&1
+    fi
+}
+
+trap cleanup EXIT INT TERM
+
 python3 -m http.server 8080 &
 SERVER_PID=$!
 
@@ -12,5 +21,11 @@ for i in {1..10}; do
     sleep 0.5
 done
 
-xdg-open http://localhost:8080
+if command -v xdg-open > /dev/null 2>&1 && { [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; }; then
+    xdg-open http://localhost:8080 > /dev/null 2>&1 &
+else
+    echo "Server running at http://localhost:8080"
+    echo "Browser not opened automatically (headless session or xdg-open unavailable)."
+fi
+
 wait $SERVER_PID

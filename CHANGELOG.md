@@ -17,6 +17,7 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Formspree AJAX integration using a pinned version of `@formspree/ajax` with SRI and `crossorigin`.
 - Docker vs. Puppy tradeoff section with comparison table and follow-up CTAs.
 - `gracias.html`: no-JS fallback confirmation page with direct download link.
+- `lista-espera-gracias.html`: no-JS fallback confirmation page for the waitlist form.
 - Style guide document `consejos_formato.md`.
 
 ### Changed
@@ -28,14 +29,16 @@ This project adheres to the [Keep a Changelog](https://keepachangelog.com/en/1.0
 - Lead magnet title updated from "agentes de IA" to "agentes de inteligencia artificial".
 - Toolkit copy updated from "minimalismo de Puppy Linux" to "minimalismo en Linux".
 - Improved dynamic form feedback accessibility with `aria-live`, `role`, and clearer field descriptions.
-- `push.sh` now sources `.env` for `GITHUB_TOKEN` and `GITHUB_REPO`, making the push self-contained without requiring pre-configured git credentials.
+- `push.sh` now uses the configured git remote `origin` and existing local git authentication instead of embedding a token in the push URL.
+- `push.sh` now stages the full repository with `git add -A` and aborts early when there are no staged changes.
+- `serve.sh` now falls back to printing the local URL instead of blindly calling `xdg-open` in headless environments.
 - All scripts now use `$DIR` resolution instead of hardcoded absolute paths — portable across any clone location.
 - Added `_subject` field to toolkit capture form for clean inbox separation from the waitlist form (both share the same Formspree ID).
 - Added footer to all three course detail pages for consistency.
 - `check.sh` now includes footer presence check across all HTML pages.
 - README rewritten to reflect current multi-file architecture and document all three scripts.
 - Clarified in `ROADMAP.md` and `VISITORS_GIFT.md` that Formspree is used for lead capture only, while toolkit delivery already happens inline on the page and via `gracias.html`.
-- Synced `.env.example` with the current environment variable names used by the project.
+- Simplified `.env.example` to clarify that current scripts do not require environment variables.
 
 ### Fixed
 - Removed dead CSS classes (`.col-side`, `.docker-col`, `.puppy-col`) with no corresponding HTML usage.

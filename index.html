@@ -7,12 +7,21 @@
     <title>PuppyTeach | Desarrollo Senior Ultra-Eficiente</title>
     <meta name="description"
         content="Desarrollo de Software en entornos de 310MB de RAM. Automatización e IA sin el overhead de Docker.">
+    <link rel="canonical" href="https://ukoquique-proves.github.io/fastDevPage/">
+    <meta property="og:title" content="PuppyTeach | Desarrollo Senior Ultra-Eficiente">
+    <meta property="og:description" content="Desarrollo de Software en entornos de 310MB de RAM. Automatización e IA sin el overhead de Docker.">
+    <meta property="og:url" content="https://ukoquique-proves.github.io/fastDevPage/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PuppyTeach | Desarrollo Senior Ultra-Eficiente">
+    <meta name="twitter:description" content="Desarrollo de Software en entornos de 310MB de RAM. Automatización e IA sin el overhead de Docker.">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="shortcut icon" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
     <header>
         <nav>
@@ -25,7 +34,7 @@
         </div>
     </header>
 
-    <main>
+    <main id="main-content">
         <section class="hero">
             <div class="badges">
                 <span class="badge">[ Build: passing ]</span>
@@ -39,7 +48,7 @@
                 ¿realmente quieres lidiar con drivers de almacenamiento <code>vfs</code>, warnings de cgroups v2 y la
                 falta de <code>systemd</code>? PuppyTeach te da el entorno pre-optimizado listo para picar código en RAM
                 sin configurar <code>daemon.json</code> ni pelearte con capas.</div>
-            <div class="hero-cta-group">
+            <div class="hero__cta-group">
                 <a href="toolkit.html" class="btn">Recibir Code Compacter gratis</a>
                 <a href="#tradeoff" class="expand-link"><span aria-hidden="true">⚖️</span> Ver comparación técnica: Docker vs. Puppy →</a>
             </div>
@@ -55,6 +64,7 @@
 [Docker Desktop]     Mem: ~2.5GB overhead (Si usas Windows/macOS en tu máquina principal)
                 </pre>
                 <p><small>* Nota de honestidad intelectual: En Linux nativo, dockerd es ligero (~137MB RAM). El verdadero cuello de botella en hardware antiguo no es el daemon, sino el ciclo de vida del almacenamiento y la gestión de capas si no configuras el driver overlay2.</small></p>
+                <p><small>* Metodología: los valores se midieron en Puppy Linux TrixieRetro usando comandos de sistema (`free -m`, `top`) antes y después del arranque de `dockerd` nativo con el driver de almacenamiento configurado. Esto refleja el consumo real de RAM del sistema base vs. Docker en un entorno limitado.</small></p>
             </div>
         </section>
 
@@ -94,8 +104,8 @@
                 Los tres cursos del catálogo iniciarán de forma simultánea en <strong>Octubre de 2026</strong>. Las plazas son limitadas debido al soporte personalizado en los entornos de laboratorio. Inscríbete en la lista de interesados para recibir prioridad de matrícula y las fechas exactas de apertura.
             </p>
 
-            <div class="lead-form-card lead-form-card--compact">
-                <p class="lead-form-intro">Lista de Espera Prioritaria:</p>
+            <div class="lead-form__card lead-form__card--compact">
+                <p class="lead-form__intro">Lista de Espera Prioritaria:</p>
                 
                 <div data-fs-success="waitlist" class="form-status form-status-success" role="status"
                     aria-live="polite" aria-atomic="true" style="display: none;">
@@ -106,20 +116,21 @@
                     <span aria-hidden="true">✕</span> Ocurrió un error. Por favor, verifica el correo e intenta nuevamente.
                 </div>
                 <!-- Reutiliza Formspree o un formulario directo -->
-                <form id="puppyteach-waitlist-form" class="lead-form" action="https://formspree.io/f/mnjyeeod" method="POST">
+                <form id="puppyteach-waitlist-form" class="lead-form" data-formspree-form data-formspree-endpoint="https://formspree.io/f/mnjyeeod" method="POST">
                     <input type="hidden" name="_subject" value="Nueva inscripción - Cohorte Octubre 2026">
-                    
-                    <div style="flex: 1; min-width: 250px;">
+                    <input type="hidden" name="_next" value="https://ukoquique-proves.github.io/fastDevPage/lista-espera-gracias.html">
+
+                    <div class="lead-form__field lead-form__field--inline">
                         <label for="waitlist-email" class="sr-only">Correo electrónico</label>
                         <input id="waitlist-email" type="email" name="email" placeholder="tu-email-senior@dominio.com"
-                            required class="lead-input" style="width: 100%; box-sizing: border-box; height: 46px;">
+                            required class="lead-form__input lead-form__input--fixed-height">
                     </div>
 
-                    <button type="submit" class="btn btn-highlight" style="margin-top: 0; height: 46px; padding: 0 1.5rem;">
+                    <button type="submit" class="btn btn--highlight btn--fixed-height">
                         Anotarme a la Cohorte
                     </button>
                 </form>
-                <p class="lead-form-note"><span aria-hidden="true">📧</span> Te notificaremos únicamente cuando se abran los cupos oficiales. Cero newsletters genéricas.</p>
+                <p class="lead-form__note"><span aria-hidden="true">📧</span> Te notificaremos únicamente cuando se abran los cupos oficiales. Cero newsletters genéricas.</p>
             </div>
         </section>
 
@@ -197,10 +208,8 @@
         &copy; 2026 PuppyTeach / Teledígitos. Sin humo, solo métricas.
     </footer>
 
-    <script>
-        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
-        formspree('initForm', { formElement: '#puppyteach-waitlist-form', formId: 'mnjyeeod' });
-    </script>
+    <script src="form-config.js"></script>
+    <script src="forms.js"></script>
     <script src="https://unpkg.com/@formspree/ajax@1.1.5/dist/global.js"
         integrity="sha512-Nv07G3S+tyNDofdo4Varx7wKYWWWpnpsBROAr4WyEVMoUPSvvhvt/CVhsAkoaWnUaT+lvTfgRu3lNFfx2k0fUw=="
         crossorigin="anonymous"

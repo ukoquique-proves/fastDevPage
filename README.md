@@ -14,6 +14,7 @@ Construido bajo la mentalidad **"Antihumo"**: HTML/CSS estático, sin frameworks
 index.html                        # Landing page principal
 toolkit.html                      # Página del toolkit Code Compacter (detalle + formulario)
 gracias.html                      # Página de confirmación post-formulario (fallback no-JS)
+lista-espera-gracias.html         # Confirmación de la lista de espera si el navegador no ejecuta JS
 curso-1-hardware-secundario.html  # Detalle del Curso 1
 curso-2-savefiles.html            # Detalle del Curso 2
 curso-3-pipeline-trixieretro.html # Detalle del Curso 3
@@ -31,6 +32,7 @@ Ambos formularios usan Formspree AJAX (`@formspree/ajax@1.1.5`) sin recarga de p
 - Formulario de descarga toolkit: `id="puppyteach-capture-form"` en `toolkit.html`
 - Formulario de lista de espera: `id="puppyteach-waitlist-form"` en `index.html`
 - Feedback inline con `data-fs-success` / `data-fs-error`
+- Fallback no-JS: `gracias.html` para el toolkit y `lista-espera-gracias.html` para la lista de espera
 
 > Formspree debe estar configurado desde el panel para que los emails lleguen correctamente.
 
@@ -48,7 +50,7 @@ Levanta el servidor y abre el browser automáticamente:
 ./serve.sh
 ```
 
-El script espera a que el servidor responda antes de abrir `http://localhost:8080`.
+El script espera a que el servidor responda antes de abrir `http://localhost:8080`. Si lo ejecutas en un entorno sin interfaz gráfica, mostrará la URL sin intentar abrir el navegador.
 
 ## Subir cambios a GitHub
 
@@ -59,6 +61,8 @@ Usa `push.sh` en lugar de `git push` directamente. Ejecuta todas las validacione
 ```
 
 Si no pasas el mensaje como argumento, lo pedirá de forma interactiva.
+El script usa el remoto `origin` y la autenticación Git ya configurada en tu máquina, sin incrustar tokens en la URL del push.
+Además, hace `git add -A` para no dejar fuera archivos nuevos o borrados por accidente y aborta si no hay cambios reales para commitear.
 
 ## Validación de consistencia
 
